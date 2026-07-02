@@ -105,7 +105,10 @@ export default async function Home() {
             {" "}
             <div className="flex items-center gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
               {bookings.map((booking) => (
-                <BookingItem key={booking.id} booking={booking} />
+                <BookingItem
+                  key={booking.id}
+                  booking={JSON.parse(JSON.stringify(booking))}
+                />
               ))}
             </div>
           </>
