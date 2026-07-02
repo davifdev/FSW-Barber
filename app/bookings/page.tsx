@@ -1,55 +1,12 @@
-import { getServerSession } from "next-auth";
 import Header from "../components/header";
-import { db } from "../lib/prisma";
-import { authOptions } from "../lib/auth";
-import { notFound } from "next/navigation";
+
 import BookingItem from "../components/booking-item";
+import { getConfirmedBookings } from "../data/get-confirmed-bookings";
+import { getConcludedBookings } from "../data/get-concluded-bookings";
 
 const Bookings = async () => {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) {
-    return notFound();
-  }
-
-  const startOfToday = new Date();
-
-  const confirmedBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as any).id,
-      date: {
-        gte: startOfToday,
-      },
-    },
-    include: {
-      service: {
-        include: {
-          barbershop: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  });
-
-  const concludeBookings = await db.booking.findMany({
-    where: {
-      userId: (session.user as any).id,
-      date: {
-        lt: startOfToday,
-      },
-    },
-    include: {
-      service: {
-        include: {
-          barbershop: true,
-        },
-      },
-    },
-    orderBy: {
-      date: "asc",
-    },
-  });
+  const confirmedBookings = await getConfirmedBookings();
+  const concludedBookings = await getConcludedBookings();
 
   return (
     <>
@@ -74,9 +31,9 @@ const Bookings = async () => {
         <h2 className="uppercase text-gray-400 font-bold text-xs mt-6 mb-3">
           Finalizados
         </h2>
-        {concludeBookings.length > 0 ? (
+        {concludedBookings.length > 0 ? (
           <>
-            {concludeBookings.map((booking) => (
+            {concludedBookings.map((booking) => (
               <BookingItem
                 key={booking.id}
                 booking={JSON.parse(JSON.stringify(booking))}
