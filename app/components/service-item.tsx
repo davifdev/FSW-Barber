@@ -219,7 +219,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                     />
                   </div>
                   {selectedDay && (
-                    <div className="p-5 flex overflow-x-auto gap-3 [&::-webkit-scrollbar]:hidden border-b border-solid">
+                    <div className="p-5 flex overflow-x-auto gap-3 [&::-webkit-scrollbar]:hidden border-b border-solid md:flex-wrap">
                       {timeList.length > 0 ? (
                         timeList.map((time) => (
                           <Button
