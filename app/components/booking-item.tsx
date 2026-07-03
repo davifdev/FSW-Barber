@@ -72,7 +72,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
-      <SheetTrigger className="w-full min-w-[90%]">
+      <SheetTrigger className="w-full min-w-[90%] lg:min-w-[30%]">
         <Card className="min-w-[90%]">
           <CardContent className="flex justify-between p-0 ">
             <div className="flex flex-col gap-2 py-5 pl-5 items-start">
@@ -104,7 +104,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
           </CardContent>
         </Card>
       </SheetTrigger>
-      <SheetContent className="w-[80%]">
+      <SheetContent className="w-[80%] lg:w-full">
         <SheetHeader>
           <SheetTitle className="text-left">Informações da Reserva</SheetTitle>
         </SheetHeader>
@@ -153,16 +153,16 @@ const BookingItem = ({ booking }: BookingItemProps) => {
           </div>
         </div>
         <SheetFooter>
-          <div className="flex items-center gap-3 mt-6">
+          <div className="lg:w-full flex items-center lg:flex-col gap-3 mt-6">
             <SheetClose asChild>
-              <Button className="w-[50%]" variant="outline">
+              <Button className="lg:w-full w-[50%]" variant="outline">
                 Voltar
               </Button>
             </SheetClose>
 
             <Dialog>
               <DialogTrigger asChild>
-                <Button className="w-[50%]" variant="destructive">
+                <Button className="w-[50%] lg:w-full" variant="destructive">
                   {isConfirmed ? "Cancelar Reserva" : "Excluir Reserva"}
                 </Button>
               </DialogTrigger>

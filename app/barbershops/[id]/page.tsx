@@ -1,3 +1,4 @@
+import ContainerWrapper from "@/app/components/container";
 import PhoneItem from "@/app/components/phone-item";
 import ServiceItem from "@/app/components/service-item";
 import Sidebar from "@/app/components/sidebar-sheet";
@@ -23,7 +24,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
   }
 
   return (
-    <div>
+    <ContainerWrapper>
       <div className="relative w-full h-[250px]">
         <Image
           fill
@@ -90,7 +91,7 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
           <PhoneItem phone={phone} key={phone} />
         ))}
       </div>
-    </div>
+    </ContainerWrapper>
   );
 };
 

@@ -204,8 +204,8 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                   Reservar
                 </Button>
 
-                <SheetContent className="px-0">
-                  <SheetHeader>
+                <SheetContent className="px-0 overflow-auto ">
+                  <SheetHeader className="lg:px-5">
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
 
@@ -251,9 +251,14 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                     </div>
                   )}
                   {selectedDate && (
-                    <SheetFooter className="px-5">
+                    <SheetFooter className="px-5 ">
                       <SheetClose asChild>
-                        <Button onClick={handleCreateBooking}>Confirmar</Button>
+                        <Button
+                          onClick={handleCreateBooking}
+                          className="w-full"
+                        >
+                          Confirmar
+                        </Button>
                       </SheetClose>
                     </SheetFooter>
                   )}
