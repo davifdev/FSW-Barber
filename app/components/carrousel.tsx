@@ -2,8 +2,7 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Button } from "./ui/button";
-import { MouseEvent, ReactNode, useRef } from "react";
-
+import { ReactNode, useRef } from "react";
 interface CarrouselProps {
   children: ReactNode;
 }
@@ -18,7 +17,6 @@ const Carrousel = ({ children }: CarrouselProps) => {
 
   const handleClickRight = () => {
     if (!carrouselRef.current) return;
-    console.log(carrouselRef.current.offsetWidth);
     carrouselRef.current.scrollLeft += carrouselRef.current.offsetWidth;
   };
 
@@ -31,7 +29,7 @@ const Carrousel = ({ children }: CarrouselProps) => {
         {children}
       </div>
 
-      <div className="absolute top-[40%]   w-full flex justify-between">
+      <div className="absolute top-[40%] w-full flex justify-between">
         <Button
           onClick={handleClickLeft}
           variant="secondary"
